@@ -1,3 +1,4 @@
+
 /* build: `node build.js modules=ALL` */
 /*! Fabric.js Copyright 2008-2012, Printio (Juriy Zaytsev, Maxim Chernyak) */
 
@@ -1731,12 +1732,12 @@ fabric.warn = function() { };
 
 if (typeof console !== 'undefined') {
   if (typeof console.log !== 'undefined' && console.log.apply) {
-    fabric.log = function() { 
+    fabric.log = function() {
       return console.log.apply(console, arguments);
     };
   }
   if (typeof console.warn !== 'undefined' && console.warn.apply) {
-    fabric.warn = function() { 
+    fabric.warn = function() {
       return console.warn.apply(console, arguments);
     };
   }
@@ -2037,9 +2038,9 @@ fabric.Observable.off = fabric.Observable.stopObserving;
   fabric.util.groupSVGElements = groupSVGElements;
 })();
 (function() {
-  
+
   var slice = Array.prototype.slice;
-  
+
   if (!Array.prototype.indexOf) {
     Array.prototype.indexOf = function (searchElement /*, fromIndex */ ) {
       if (this === void 0 || this === null) {
@@ -2077,7 +2078,7 @@ fabric.Observable.off = fabric.Observable.stopObserving;
       for (var i = 0, len = this.length >>> 0; i < len; i++) {
         if (i in this) {
           fn.call(context, this[i], i, this);
-        }  
+        }
       }
     };
   }
@@ -2186,8 +2187,8 @@ fabric.Observable.off = fabric.Observable.stopObserving;
    */
   function max(array, byProperty) {
     if (!array || array.length === 0) return undefined;
-    
-    var i = array.length - 1, 
+
+    var i = array.length - 1,
         result = byProperty ? array[i][byProperty] : array[i];
     if (byProperty) {
       while (i--) {
@@ -2215,8 +2216,8 @@ fabric.Observable.off = fabric.Observable.stopObserving;
    */
   function min(array, byProperty) {
     if (!array || array.length === 0) return undefined;
-    
-    var i = array.length - 1, 
+
+    var i = array.length - 1,
         result = byProperty ? array[i][byProperty] : array[i];
 
     if (byProperty) {
@@ -2242,10 +2243,10 @@ fabric.Observable.off = fabric.Observable.stopObserving;
     min: min,
     max: max
   };
-  
+
 })();
 (function(){
-  
+
   /**
    * Copies all enumerable properties of one object to another
    * @memberOf fabric.util.object
@@ -2276,7 +2277,7 @@ fabric.Observable.off = fabric.Observable.stopObserving;
     extend: extend,
     clone: clone
   };
-  
+
 })();
 (function() {
 
@@ -2333,11 +2334,11 @@ fabric.util.string = {
 }());
 
 (function() {
-  
+
   var slice = Array.prototype.slice,
       apply = Function.prototype.apply,
       dummy = function() { };
-  
+
   if (!Function.prototype.bind) {
     /**
      * Cross-browser approximation of ES5 Function.prototype.bind (not fully spec conforming)
@@ -2349,22 +2350,22 @@ fabric.util.string = {
      Function.prototype.bind = function(thisArg) {
        var fn = this, args = slice.call(arguments, 1), bound;
        if (args.length) {
-         bound = function() { 
-           return apply.call(fn, this instanceof dummy ? this : thisArg, args.concat(slice.call(arguments))); 
+         bound = function() {
+           return apply.call(fn, this instanceof dummy ? this : thisArg, args.concat(slice.call(arguments)));
          };
        }
        else {
-         bound = function() { 
+         bound = function() {
            return apply.call(fn, this instanceof dummy ? this : thisArg, arguments);
          };
        }
        dummy.prototype = this.prototype;
        bound.prototype = new dummy;
-       
+
        return bound;
      };
   }
-  
+
 })();
 (function() {
 
@@ -2744,7 +2745,7 @@ fabric.util.string = {
 
 })();
 (function() {
-  
+
   var _slice = Array.prototype.slice;
 
   /**
@@ -2818,7 +2819,7 @@ fabric.util.string = {
   function addClass(element, className) {
     if ((' ' + element.className + ' ').indexOf(' ' + className + ' ') === -1) {
       element.className += (element.className ? ' ' : '') + className;
-    }  
+    }
   }
 
   /**
@@ -2856,7 +2857,7 @@ fabric.util.string = {
       valueT += element.offsetTop  || 0;
       valueL += element.offsetLeft || 0;
       element = element.offsetParent;
-    } 
+    }
     while (element);
     return ({ left: valueL, top: valueT });
   }
@@ -2866,12 +2867,12 @@ fabric.util.string = {
 
     var selectProp = 'userSelect' in style
       ? 'userSelect'
-      : 'MozUserSelect' in style 
-        ? 'MozUserSelect' 
-        : 'WebkitUserSelect' in style 
-          ? 'WebkitUserSelect' 
-          : 'KhtmlUserSelect' in style 
-            ? 'KhtmlUserSelect' 
+      : 'MozUserSelect' in style
+        ? 'MozUserSelect'
+        : 'WebkitUserSelect' in style
+          ? 'WebkitUserSelect'
+          : 'KhtmlUserSelect' in style
+            ? 'KhtmlUserSelect'
             : '';
 
     /**
@@ -2929,7 +2930,7 @@ fabric.util.string = {
      */
     function getScript(url, callback) {
     	var headEl = fabric.document.getElementsByTagName("head")[0],
-    	    scriptEl = fabric.document.createElement('script'), 
+    	    scriptEl = fabric.document.createElement('script'),
     	    loading = true;
 
     	scriptEl.type = 'text/javascript';
@@ -2938,8 +2939,8 @@ fabric.util.string = {
     	/** @ignore */
     	scriptEl.onload = /** @ignore */ scriptEl.onreadystatechange = function(e) {
     	  if (loading) {
-    	    if (typeof this.readyState == 'string' && 
-    	        this.readyState !== 'loaded' && 
+    	    if (typeof this.readyState == 'string' &&
+    	        this.readyState !== 'loaded' &&
     	        this.readyState !== 'complete') return;
       	  loading = false;
       		callback(e || fabric.window.event);
@@ -2961,14 +2962,14 @@ fabric.util.string = {
   fabric.util.addClass = addClass;
   fabric.util.wrapElement = wrapElement;
   fabric.util.getElementOffset = getElementOffset;
-  
+
 })();
 (function(){
-  
+
   function addParamToUrl(url, param) {
     return url + (/\?/.test(url) ? '&' : '?') + param;
   }
-  
+
   var makeXHR = (function() {
     var factories = [
       function() { return new ActiveXObject("Microsoft.XMLHTTP"); },
@@ -2988,7 +2989,7 @@ fabric.util.string = {
   })();
 
   function emptyFn() { };
-  
+
   /**
    * Cross-browser abstraction for sending XMLHttpRequest
    * @method request
@@ -3007,7 +3008,7 @@ fabric.util.string = {
         onComplete = options.onComplete || function() { },
         request = makeXHR(),
         body;
-        
+
     /** @ignore */
     request.onreadystatechange = function() {
       if (request.readyState === 4) {
@@ -3015,7 +3016,7 @@ fabric.util.string = {
         request.onreadystatechange = emptyFn;
       }
     };
-    
+
     if (method === 'GET') {
       body = null;
       if (typeof options.parameters == 'string') {
@@ -3024,7 +3025,7 @@ fabric.util.string = {
     }
 
     request.open(method, url, true);
-    
+
     if (method === 'POST' || method === 'PUT') {
       request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     }
@@ -3032,7 +3033,7 @@ fabric.util.string = {
     request.send(body);
     return request;
   };
-  
+
   fabric.util.request = request;
 })();
 (function() {
@@ -4235,20 +4236,20 @@ fabric.util.string = {
 
 })();
 (function(global) {
-  
+
   "use strict";
-  
+
   /* Adaptation of work of Kevin Lindsey (kevin@kevlindev.com) */
-  
+
   var fabric = global.fabric || (global.fabric = { });
 
-  if (fabric.Point) {    
+  if (fabric.Point) {
     fabric.warn('fabric.Point is already defined');
     return;
   }
 
   fabric.Point = Point;
-  
+
   /**
    * @name Point
    * @memberOf fabric
@@ -4262,11 +4263,11 @@ fabric.util.string = {
       this.init(x, y);
     }
   }
-  
+
   Point.prototype = /** @scope fabric.Point.prototype */ {
-    
+
     constructor: Point,
-    
+
     /**
      * @method init
      * @param {Number} x
@@ -4276,7 +4277,7 @@ fabric.util.string = {
       this.x = x;
       this.y = y;
     },
-    
+
     /**
      * @method add
      * @param {fabric.Point} that
@@ -4285,7 +4286,7 @@ fabric.util.string = {
     add: function (that) {
       return new Point(this.x + that.x, this.y + that.y);
     },
-    
+
     /**
      * @method addEquals
      * @param {fabric.Point} that
@@ -4296,7 +4297,7 @@ fabric.util.string = {
       this.y += that.y;
       return this;
     },
-    
+
     /**
      * @method scalarAdd
      * @param {Number} scalar
@@ -4305,7 +4306,7 @@ fabric.util.string = {
     scalarAdd: function (scalar) {
       return new Point(this.x + scalar, this.y + scalar);
     },
-    
+
     /**
      * @method scalarAddEquals
      * @param {Number} scalar
@@ -4316,7 +4317,7 @@ fabric.util.string = {
       this.y += scalar;
       return this;
     },
-    
+
     /**
      * @method subtract
      * @param {fabric.Point} that
@@ -4325,7 +4326,7 @@ fabric.util.string = {
     subtract: function (that) {
       return new Point(this.x - that.x, this.y - that.y);
     },
-    
+
     /**
      * @method subtractEquals
      * @param {fabric.Point} that
@@ -4336,89 +4337,89 @@ fabric.util.string = {
       this.y -= that.y;
       return this;
     },
-    
+
     scalarSubtract: function (scalar) {
       return new Point(this.x - scalar, this.y - scalar);
     },
-    
+
     scalarSubtractEquals: function (scalar) {
       this.x -= scalar;
       this.y -= scalar;
       return this;
     },
-    
+
     multiply: function (scalar) {
       return new Point(this.x * scalar, this.y * scalar);
     },
-    
+
     multiplyEquals: function (scalar) {
       this.x *= scalar;
       this.y *= scalar;
       return this;
     },
-    
+
     divide: function (scalar) {
       return new Point(this.x / scalar, this.y / scalar);
     },
-    
+
     divideEquals: function (scalar) {
       this.x /= scalar;
       this.y /= scalar;
       return this;
     },
-    
+
     eq: function (that) {
       return (this.x == that.x && this.y == that.y);
     },
-    
+
     lt: function (that) {
       return (this.x < that.x && this.y < that.y);
     },
-    
+
     lte: function (that) {
       return (this.x <= that.x && this.y <= that.y);
     },
-    
+
     gt: function (that) {
       return (this.x > that.x && this.y > that.y);
     },
-    
+
     gte: function (that) {
       return (this.x >= that.x && this.y >= that.y);
     },
-    
+
     lerp: function (that, t) {
       return new Point(this.x + (that.x - this.x) * t, this.y + (that.y - this.y) * t);
     },
-    
+
     distanceFrom: function (that) {
       var dx = this.x - that.x,
           dy = this.y - that.y;
       return Math.sqrt(dx * dx + dy * dy);
     },
-    
+
     min: function (that) {
       return new Point(Math.min(this.x, that.x), Math.min(this.y, that.y));
     },
-    
+
     max: function (that) {
       return new Point(Math.max(this.x, that.x), Math.max(this.y, that.y));
     },
-    
+
     toString: function () {
       return this.x + "," + this.y;
     },
-    
+
     setXY: function (x, y) {
       this.x = x;
       this.y = y;
     },
-    
+
     setFromPoint: function (that) {
       this.x = that.x;
       this.y = that.y;
     },
-    
+
     swap: function (that) {
       var x = this.x,
           y = this.y;
@@ -4428,7 +4429,7 @@ fabric.util.string = {
       that.y = y;
     }
   };
-  
+
 })(typeof exports != 'undefined' ? exports : this);
 (function(global) {
 
@@ -4580,16 +4581,16 @@ fabric.util.string = {
 
 })(typeof exports != 'undefined' ? exports : this);
 (function(global) {
-  
+
   "use strict";
-  
+
   var fabric = global.fabric || (global.fabric = { });
-  
+
   if (fabric.Color) {
     fabric.warn('fabric.Color is already defined.');
     return;
   }
-  
+
   /**
    * The purpose of {@link fabric.Color} is to abstract and encapsulate common color operations;
    * {@link fabric.Color} is a constructor and creates instances of {@link fabric.Color} objects.
@@ -4606,11 +4607,11 @@ fabric.util.string = {
       this._tryParsingColor(color);
     }
   }
-  
+
   fabric.Color = Color;
-  
+
   fabric.Color.prototype = /** @scope fabric.Color.prototype */ {
-    
+
     /**
      * @private
      * @method _tryParsingColor
@@ -4684,7 +4685,7 @@ fabric.util.string = {
     },
 
     /**
-     * Gets value of alpha channel for this color 
+     * Gets value of alpha channel for this color
      * @method getAlpha
      * @return {Number} 0-1
      */
@@ -4760,14 +4761,14 @@ fabric.util.string = {
       return this;
     }
   };
-  
+
   /**
    * Regex matching color in RGB or RGBA formats (ex: rgb(0, 0, 0), rgb(255, 100, 10, 0.5), rgb(1,1,1))
    * @static
    * @field
    */
   fabric.Color.reRGBa = /^rgba?\((\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})(?:\s*,\s*(\d+(?:\.\d+)?))?\)$/;
-  
+
   /**
    * Regex matching color in HEX format (ex: #FF5555, 010155, aff)
    * @static
@@ -4784,7 +4785,7 @@ fabric.util.string = {
   fabric.Color.fromRgb = function(color) {
     return Color.fromSource(Color.sourceFromRgb(color));
   };
-  
+
   /**
    * Returns array represenatation (ex: [100, 100, 200, 1]) of a color that's in RGB or RGBA format
    * @method sourceFromRgb
@@ -4822,7 +4823,7 @@ fabric.util.string = {
   fabric.Color.fromHex = function(color) {
     return Color.fromSource(Color.sourceFromHex(color));
   };
-  
+
   /**
    * Returns array represenatation (ex: [100, 100, 200, 1]) of a color that's in HEX format
    * @static
@@ -4846,7 +4847,7 @@ fabric.util.string = {
       ];
     }
   };
-  
+
   /**
    * Returns new color object, when given color in array representation (ex: [200, 100, 100, 0.5])
    * @static
@@ -9673,28 +9674,28 @@ fabric.util.object.extend(fabric.StaticCanvas.prototype, {
 
 })(typeof exports != 'undefined' ? exports : this);
 (function(global) {
-  
+
   "use strict";
-  
+
   var fabric = global.fabric || (global.fabric = { });
-  
+
   if (fabric.Triangle) {
     fabric.warn('fabric.Triangle is already defined');
     return;
   }
-  
-  /** 
+
+  /**
    * @class Triangle
    * @extends fabric.Object
    */
   fabric.Triangle = fabric.util.createClass(fabric.Object, /** @scope fabric.Triangle.prototype */ {
-    
+
     /**
      * @property
      * @type String
      */
     type: 'triangle',
-    
+
     /**
      * Constructor
      * @method initialize
@@ -9703,28 +9704,28 @@ fabric.util.object.extend(fabric.StaticCanvas.prototype, {
      */
     initialize: function(options) {
       options = options || { };
-      
+
       this.callSuper('initialize', options);
-      
+
       this.set('width', options.width || 100)
           .set('height', options.height || 100);
     },
-    
+
     /**
      * @private
      * @method _render
      * @param ctx {CanvasRenderingContext2D} Context to render on
      */
-    _render: function(ctx) {      
+    _render: function(ctx) {
       var widthBy2 = this.width / 2,
           heightBy2 = this.height / 2;
-      
+
       ctx.beginPath();
       ctx.moveTo(-widthBy2, heightBy2);
       ctx.lineTo(0, -heightBy2);
       ctx.lineTo(widthBy2, heightBy2);
       ctx.closePath();
-      
+
       if (this.fill) {
         ctx.fill();
       }
@@ -9732,7 +9733,7 @@ fabric.util.object.extend(fabric.StaticCanvas.prototype, {
         ctx.stroke();
       }
     },
-    
+
     /**
      * Returns complexity of an instance
      * @method complexity
@@ -9741,7 +9742,7 @@ fabric.util.object.extend(fabric.StaticCanvas.prototype, {
     complexity: function() {
       return 1;
     },
-    
+
     /**
      * Returns svg representation of an instance
      * @method toSVG
@@ -9765,7 +9766,7 @@ fabric.util.object.extend(fabric.StaticCanvas.prototype, {
               '/>';
     }
   });
-  
+
   /**
    * Returns fabric.Triangle instance from an object representation
    * @static
@@ -12992,29 +12993,29 @@ fabric.Image.filters.Tint = fabric.util.createClass( /** @scope fabric.Image.fil
    * @param {Object} canvasEl Canvas element to apply filter to
    */
   applyTo: function(canvasEl) {
-    
+
     var context = canvasEl.getContext('2d'),
         imageData = context.getImageData(0, 0, canvasEl.width, canvasEl.height),
         data = imageData.data,
         iLen = data.length, i,
         r, g, b, a;
-  
+
 	var rgb = parseInt(this.color).toString(16);
 	var cr = parseInt('0x'+rgb.substr(0, 2));
 	var cg = parseInt('0x'+rgb.substr(2, 2));
-	var cb = parseInt('0x'+rgb.substr(4, 2)); 
-	
+	var cb = parseInt('0x'+rgb.substr(4, 2));
+
     for (i = 0; i < iLen; i+=4) {
 
       a = data[i+3];
-      
-      if (a > 0){		
+
+      if (a > 0){
         data[i] = cr;
         data[i+1] = cg;
-        data[i+2] = cb;      
-      }      
+        data[i+2] = cb;
+      }
     }
-    
+
     context.putImageData(imageData, 0, 0);
   },
 
